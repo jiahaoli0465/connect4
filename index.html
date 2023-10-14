@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Four</title>
+    <link href="connect4.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div id="initialScreen" class="screen">  
+      <h1 id="title">Lets Play Connect Four!</h1>
+        <form autocomplete="off">
+            <div class="input-group">
+                <label for="playerName1">Enter Player 1: </label>
+                <input type="text" placeholder="name" id="playerName1">
+                <input type="text" id="p1color" placeholder="color (default is red)">
+            </div>
+
+            <div class="input-group">
+                <label for="playerName2">Enter Player 2: </label>
+                <input type="text" placeholder="name" id="playerName2">
+                <input type="text" id="p2color" placeholder="color (default is blue)">
+            </div>
+            <input type="submit" value="Play Game" class="submit-button">
+        </form>
+    </div> 
+
+    <div id="gameScreen">
+      <div id="dropper">
+
+      </div>
+
+
+      <div id="board"> 
+        
+      </div>
+
+      <div id="gameCompleteWidget" class="widget" style="display: none;">
+        <h2 id="widgetTitle">Game Complete</h2>
+        <p id="widgetMessage">player won</p>
+        <button id="widgetRestartGame">Play Again</button>
+        <button id="widgetResetGame">Reset Players</button>
+      </div>
+      
+
+
+    </div>
+
+    <script src="connect4.js"></script>
+</body>
+</html>
