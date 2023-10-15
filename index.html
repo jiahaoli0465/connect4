@@ -1,74 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect Four</title>
     <link href="connect4.css" rel="stylesheet">
-    
 </head>
 <body>
-    <div id="initialScreen" class="screen">  
-      <h1 id="title">Lets Play Connect Four!</h1>
-      <button id="showColors">Colors</button>
+    <!-- Initial Screen -->
+    <div id="initialScreen" class="screen">
+        <h1 id="title">Let's Play Connect Four!</h1>
+        <button id="showColors">Colors</button>
 
-      <!-- The modal -->
-      <div id="colorModal" class="modal">
-          <div class="modal-content">
-              
+        <!-- Color Modal -->
+        <div id="colorModal" class="modal">
+            <div class="modal-content">
                 <div id="colorList"></div>
+            </div>
+        </div>
 
-              
-
-          </div>
-      </div>
+        <!-- Player Input Form -->
         <form autocomplete="off">
-
-
-
             <div class="input-group">
                 <label for="playerName1" class="pnames">Player 1: </label>
-                <!-- <input type="text" placeholder="name" id="playerName1"> -->
                 <input type="text" id="p1color" placeholder="default: red">
                 <div class="color-tile" id="p1tile"></div>
-
             </div>
-            
-
             <div class="input-group">
                 <label for="playerName2" class="pnames">Player 2: </label>
-                <!-- <input type="text" placeholder="name" id="playerName2"> -->
                 <input type="text" id="p2color" placeholder="default: blue">
                 <div class="color-tile" id="p2tile"></div>
-
             </div>
             <input type="submit" value="Play Game" class="submit-button" onclick="scrollToGame()">
         </form>
 
-        <p id="authortext" >Made by Jiahao Li</p>
-    </div> 
-
-    <div id="gameScreen">
-      <div id="dropper">
-
-      </div>
-
-
-      <div id="board"> 
-        
-      </div>
-
-      <div id="gameCompleteWidget" class="widget" style="display: none;">
-        <h2 id="widgetTitle">Game Complete</h2>
-        <p id="widgetMessage">player won</p>
-        <button id="widgetRestartGame">Play Again</button>
-        <button id="widgetResetGame">Reset Players</button>
-      </div>
-      
-
-
+        <!-- Author Information -->
+        <p id="authortext">Made by Jiahao Li</p>
     </div>
 
+    <!-- Game Screen -->
+    <div id="gameScreen">
+        <div id="dropper"></div>
+        <div id="board"></div>
+        <div id="gameCompleteWidget" class="widget" style="display: none;">
+            <h2 id="widgetTitle">Game Complete</h2>
+            <p id="widgetMessage">player won</p>
+            <button id="widgetRestartGame">Play Again</button>
+            <button id="widgetResetGame">Reset Players</button>
+        </div>
+    </div>
+
+    <!-- Game Script -->
     <script src="connect4.js"></script>
 </body>
 </html>

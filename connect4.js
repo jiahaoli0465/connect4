@@ -430,3 +430,42 @@ window.addEventListener('click', function(event) {
         closeModal();
     }
 });
+
+
+
+const colorsButton = document.getElementById('showColors');
+const gameScreen = document.getElementById('gameScreen');
+
+let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+window.addEventListener('scroll', function() {
+    // Get the position of the game screen relative to the viewport
+    const gameScreenTop = gameScreen.getBoundingClientRect().top;
+
+    // Calculate the opacity based on the position of the game screen
+    let opacity = gameScreenTop / 100;
+    if (opacity > 1) {
+        opacity = 1;
+    } else if (opacity < 0) {
+        opacity = 0;
+    }
+
+    // Apply the calculated opacity to the button
+    colorsButton.style.opacity = opacity;
+
+    // Determine the scroll direction
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st > lastScrollTop) {
+        // Scrolling down
+        colorsButton.classList.remove('reappearing');
+        if (opacity === 0) {
+            colorsButton.style.visibility = 'hidden';
+        }
+    } else {
+        // Scrolling up
+        colorsButton.classList.add('reappearing');
+        colorsButton.style.visibility = 'visible';
+    }
+    lastScrollTop = st <= 0 ? 0 : st;
+});
+

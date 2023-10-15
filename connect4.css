@@ -344,21 +344,13 @@ button:hover {
   z-index: 5;
   border: 5px solid #5d4538; /* giving it a border similar to tiles */
   border-radius: 10px;
-  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* existing shadow for depth */
+  box-shadow: 0 0  50px rgba(0, 0, 0, 0.584); /* existing shadow for depth */
   background-color: #634A3C; /* matching the tile's wooden color */
   display: flex;
   flex-direction: column;
   /* align-items: center; */
 }
 
-/* .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  color: #FCE7BD;  
-  text-shadow: 0 0.3px .3px #888888;
-} */
 
 .color-option {
   display: inline-flex;
@@ -376,7 +368,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -387,3 +379,20 @@ button:hover {
   height: 100%;
 }
 
+#showColors {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1001;
+  transition: opacity 1s, visibility 0s linear 1s; /* Added conditional delay for visibility */
+
+}
+
+#showColors.reappearing {
+  transition: opacity 1s, visibility 0s linear 0s; /* Remove delay when reappearing */
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden; /* This ensures that the button isn't clickable when it's invisible */
+}
