@@ -27,6 +27,7 @@ h1 {
   letter-spacing: normal; /* Resetting to normal spacing */
   text-transform: none; /* Removed uppercase transformation */
   text-align: center; /* Ensures horizontal centering */
+  text-shadow: 0 1px 1px #888888;
 
 
 }
@@ -34,6 +35,9 @@ h1 {
 .input-group {
   width: 100%;
   margin: 5px 0;
+  text-shadow: 0 .3px .3px #888888;
+    font-family: 'Arial', sans-serif; /* For simplicity, but you might want to explore other fonts like Roboto or Open Sans */
+  color: #381f11;
 }
 
 input[type="text"], #p1color, #playerName1, #p2color, #playerName2 {
@@ -45,6 +49,7 @@ input[type="text"], #p1color, #playerName1, #p2color, #playerName2 {
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s; /* Added transform transition */
   color: #5a3713;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+
 }
 
 input[type="text"]:focus {
@@ -54,7 +59,13 @@ input[type="text"]:focus {
 }
 
 input[type="text"]::placeholder {
-  color: #aaa;
+  color: #8a776b;
+  text-shadow: 0 0.1px .1px #888888;
+
+}
+#authortext{
+  text-shadow: 0 0.1px .1px #888888;
+  color: #cda8917b;
 }
 
 .submit-button {
