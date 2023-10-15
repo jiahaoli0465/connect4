@@ -12,15 +12,19 @@
       <h1 id="title">Lets Play Connect Four!</h1>
         <form autocomplete="off">
             <div class="input-group">
-                <label for="playerName1">Enter Player 1: </label>
-                <input type="text" placeholder="name" id="playerName1">
+                <label for="playerName1">Player 1: </label>
+                <!-- <input type="text" placeholder="name" id="playerName1"> -->
                 <input type="text" id="p1color" placeholder="color (default is red)">
+                <div class="color-tile" id="p1tile"></div>
+
             </div>
 
             <div class="input-group">
-                <label for="playerName2">Enter Player 2: </label>
-                <input type="text" placeholder="name" id="playerName2">
+                <label for="playerName2">Player 2: </label>
+                <!-- <input type="text" placeholder="name" id="playerName2"> -->
                 <input type="text" id="p2color" placeholder="color (default is blue)">
+                <div class="color-tile" id="p2tile"></div>
+
             </div>
             <input type="submit" value="Play Game" class="submit-button">
         </form>

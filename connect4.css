@@ -1,10 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgba(254, 195, 124, 0.306);
+  font-family: 'Arial', sans-serif; /* For simplicity, but you might want to explore other fonts like Roboto or Open Sans */
+  background-color: #FCE7BD; /* Simplified background color */
   scroll-behavior: smooth;
-  overflow: hidden;
   overflow-y: scroll;
   user-select: none;
 }
@@ -15,35 +14,43 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding: 2rem;
+  
 }
 
+
 h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #5a3713;
+  font-size: 3rem; /* Slightly larger size but not too bold */
+  margin-bottom: 25px; 
+  color: #6B4E3D; /* A deeper, more subdued shade of brown */
+  font-weight: 800; /* Lighter font-weight for a sleek appearance */
+  letter-spacing: normal; /* Resetting to normal spacing */
+  text-transform: none; /* Removed uppercase transformation */
+  text-align: center; /* Ensures horizontal centering */
+
+
 }
 
 .input-group {
-  font-size: medium;
-  color: #74583bc4;
-  border: 0px solid #333;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  width: 100%;
+  margin: 5px 0;
 }
 
 input[type="text"], #p1color, #playerName1, #p2color, #playerName2 {
   border-radius: 5px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding: 5px 5px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-  background-color: rgba(255, 245, 234, 0.713);
-  width: 100%;
-  transition: border-color 0.3s;
-  color: #74583bc4;
+  border: 2px solid #5a3713; /* Enhanced border */
+  padding: 10px 15px; 
+  width: 40%;
+  background-color: #eeeae44d; /* Solid white for contrast */
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s; /* Added transform transition */
+  color: #5a3713;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+}
+
+input[type="text"]:focus {
+  border-color: #5a3713;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Enhanced focus shadow */
+  transform: scale(1.02); /* Slightly enlarge when focused */
 }
 
 input[type="text"]::placeholder {
@@ -51,26 +58,31 @@ input[type="text"]::placeholder {
 }
 
 .submit-button {
-  display: block;
-  margin: 2vh auto 0 auto;
-  background-color: rgba(162, 124, 78, 0.306);
-  border: 0.5px solid #5f4b2a;
-  color: #333;
-  font-size: 16px;
-  padding: 10px 20px;
-  text-transform: uppercase;
+  margin-top: 20px;
+  background-color: #5a3713;
+  border: none;
+  color: #FFF;
+  font-size: 18px; /* Increased font size for better visibility */
+  padding: 12px 30px; 
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 4px;
-  outline: none;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  border-radius: 50px; /* Pill-shaped button */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+
+  /* Use a transform for a press-down effect on active */
+  transform: translateY(0);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .submit-button:hover {
-  background-color: #333;
-  color: #fff;
+  background-color: #73513D; /* Darkened hover color */
 }
 
-
+.submit-button:active {
+  transform: translateY(2px); /* Button press down effect */
+}
 
 
 
@@ -105,6 +117,12 @@ input[type="text"]::placeholder {
 
 
 }
+
+.drops:hover{
+  background-color: var(--current-player-color);
+
+
+}
 #board {
   border: 10px solid #a1804b;
   
@@ -123,11 +141,50 @@ input[type="text"]::placeholder {
 
 
 .tile {
+  transition: transform 0.5s ease-in;
   height: 70px;
   width:  70px;
   background-color: rgb(223, 223, 223);
   border-radius: 50%;
   margin: 5px;
   border: 5px solid rgb(180, 129, 84);
+  
 }
 
+.fall {
+  animation-name: fall-animation;
+  animation-duration: 50ms;
+}
+
+.fall {
+  transform: translateY(calc(100% * [NUMBER_OF_ROWS_TO_FALL]));
+}
+
+@keyframes fall-animation {
+  from {
+      transform: translateY(-300px);
+  }
+  to {
+      transform: translateY(0);
+  }
+}
+
+
+
+
+.input-group {
+  display: flex;
+  align-items: center; /* align items vertically in the middle */
+  gap: 10px; /* provides spacing between child elements, can adjust as needed */
+}
+
+.color-tile {
+  width: 33px;
+  height: 33px;
+  border: 2px solid #5a4a34;
+  margin-left: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  margin: 5px;
+
+}
