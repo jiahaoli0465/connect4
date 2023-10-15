@@ -10,7 +10,22 @@
 <body>
     <div id="initialScreen" class="screen">  
       <h1 id="title">Lets Play Connect Four!</h1>
+      <button id="showColors">Colors</button>
+
+      <!-- The modal -->
+      <div id="colorModal" class="modal">
+          <div class="modal-content">
+              
+                <div id="colorList"></div>
+
+              
+
+          </div>
+      </div>
         <form autocomplete="off">
+
+
+
             <div class="input-group">
                 <label for="playerName1" class="pnames">Player 1: </label>
                 <!-- <input type="text" placeholder="name" id="playerName1"> -->
@@ -18,6 +33,7 @@
                 <div class="color-tile" id="p1tile"></div>
 
             </div>
+            
 
             <div class="input-group">
                 <label for="playerName2" class="pnames">Player 2: </label>
@@ -28,6 +44,7 @@
             </div>
             <input type="submit" value="Play Game" class="submit-button" onclick="scrollToGame()">
         </form>
+
         <p id="authortext" >Made by Jiahao Li</p>
     </div> 
 

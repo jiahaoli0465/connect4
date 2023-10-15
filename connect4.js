@@ -352,8 +352,10 @@ const commonColors = [
   'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 
   'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'SlateGrey', 'Snow', 
   'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 
-  'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
+  'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen',
+  'MediumBlue', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed'
 ];
+
 
 function isValidColor(strColor) {
   var s = new Option().style;
@@ -382,4 +384,49 @@ color2.addEventListener('input', function() {
     document.querySelector('#p2tile').style.backgroundColor = 'blue';
 
   }
+});
+
+
+
+// Fill the modal with colors
+const colorList = document.getElementById('colorList');
+commonColors.forEach(color => {
+  const colorOption = document.createElement('div');
+  colorOption.className = 'color-option';
+  colorOption.style.backgroundColor = color;
+  colorOption.title = color;
+  colorOption.textContent = color;  // Add this line to set the color name as text
+  
+  colorOption.addEventListener('click', function() {
+      document.getElementById('colorInput').value = color;
+      closeModal();
+  });
+  colorList.appendChild(colorOption);
+});
+
+
+// Show the modal
+document.getElementById('showColors').addEventListener('click', function() {
+    document.getElementById('colorModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';  // Disable scrolling on the page
+
+});
+
+// Close the modal
+
+function closeModal() {
+    document.getElementById('colorModal').style.display = 'none';
+    document.body.style.overflow = '';  // Restore scrolling
+
+}
+
+const modal = document.getElementById('colorModal');
+const modalContent = document.querySelector('.modal-content');
+
+// Event listener for a click on the entire window
+window.addEventListener('click', function(event) {
+    // Check if the click is outside the modal content
+    if (event.target === modal) {
+        closeModal();
+    }
 });

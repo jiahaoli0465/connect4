@@ -56,6 +56,8 @@ input[type="text"]:focus {
   border-color: #5a3713;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Enhanced focus shadow */
   transform: scale(1.02); /* Slightly enlarge when focused */
+  outline: none;  /* Remove default browser outline */
+
 }
 
 input[type="text"]::placeholder {
@@ -283,3 +285,105 @@ input[type="text"]::placeholder {
 .drops.fall {
   animation: dropperFall 0.25s forwards;
 }
+
+.modal {
+  display: none; 
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;  
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* existing shadow for depth */
+  
+
+}
+
+button {
+  background-color: #634A3C; /* matching the tile's wooden color */
+  color: #e6e6e6; /* Text color */
+  text-shadow: 0 0.3px .3px #888888; /* Slight text shadow for depth */
+  border: none; /* Remove default borders */
+  border-radius: 20px; /* pill-shaped button */
+  padding: 10px 20px; /* Padding for button size */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* shadow for depth */
+  border: 1px solid #5d4538;
+  
+}
+
+button:hover {
+  background-color: #5a3713; /* Slightly brighter color on hover */
+}
+
+
+
+
+
+#colorList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.modal-content {
+  position: relative;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;            
+  padding: 20px;
+  background-color: #fff;
+  overflow-y: auto;       
+  z-index: 5;
+  border: 5px solid #5d4538; /* giving it a border similar to tiles */
+  border-radius: 10px;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* existing shadow for depth */
+  background-color: #634A3C; /* matching the tile's wooden color */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+/* .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #FCE7BD;  
+  text-shadow: 0 0.3px .3px #888888;
+} */
+
+.color-option {
+  display: inline-flex;
+  width: 110px;
+  height: 30px;
+  cursor: pointer;
+  margin-inline: 8px;
+  margin-bottom: 10px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold; /* Make the text bold */
+  color: #f5f5f5; /* Slightly lighter color for better contrast */
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Subtle shadow to lift the text a bit */
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.colors-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  
+  height: 100%;
+}
+
