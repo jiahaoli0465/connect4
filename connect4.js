@@ -3,7 +3,6 @@
 
 
 
-let timeout;
 
 function scrollToGame() {
   const gameScreen = document.getElementById('gameScreen');
@@ -206,7 +205,9 @@ class Game {
             // find winner (only checking each win-possibility as needed)
             if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
               this.gameOver = true; // mark game as over
-              document.getElementById("widgetMessage").innerText = `${this.currPlayer} won!`;
+              let str = this.currPlayer;
+              let capitalPlayerWon = str.charAt(0).toUpperCase() + str.slice(1);
+              document.getElementById("widgetMessage").innerText = `${capitalPlayerWon} won!`;
               document.getElementById("gameCompleteWidget").style.display = "block";
               return true;
           }
