@@ -23,12 +23,12 @@ function setFallAnimationDistance(distance) {
   // Update the style element with the new styles
   styleElem.textContent = `
       .fall {
-          animation-name: fall-animation;
-          animation-duration: 500ms;
-          transition: transform 500ms;
+          animation-name: dropperFall;
+          animation-duration: 250ms;
+          transition: transform 250ms;
       }
       
-      @keyframes fall-animation {
+      @keyframes dropperFall{
           from {
               transform: translateY(0px);
           }
@@ -114,7 +114,26 @@ class Game {
         return;
     }
 
-    let distanceToFall = (this.height - r - 1) * 80; // calculate distance
+    // let distanceToFall = (this.height - r - 1) * 80; // calculate distance
+    // let distanceToFall = (this.height - r) * rowDistance;
+    let dtm;
+    if (r === 5){
+      dtm = 0;
+    }
+    if (r === 4){
+      dtm = 95;
+    }
+    if (r === 3){
+      dtm = 190;
+    }
+    if (r === 2){
+      dtm = 285;
+    }
+    if (r === 1 ){
+      dtm = 380;
+    }
+    console.log(r);
+    let distanceToFall = 580 - dtm;
 
     // Update the fall animation distance
     setFallAnimationDistance(distanceToFall);

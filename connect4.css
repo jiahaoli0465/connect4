@@ -257,10 +257,10 @@ input[type="text"]::placeholder {
       transform: translateY(0);
   }
   100% {
-      transform: translateY(var(--fall-distance, 500px)); /* Default to 500px if --fall-distance is not set */
+      transform: translateY(var(--fall-distance, 580px)); /* Default to 500px if --fall-distance is not set */
   }
 }
 
 .drops.fall {
-  animation: dropperFall 0.5s forwards;
+  animation: dropperFall 0.25s forwards;
 }
