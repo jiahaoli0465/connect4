@@ -265,9 +265,12 @@ let p1color;
 let p2color;
 // let game = new Game(null, null);
 formElement.addEventListener("submit", function(e) {
+ 
   e.preventDefault();
   document.getElementById("board").innerHTML = '';
   document.getElementById("dropper").innerHTML = '';
+  document.getElementById("gameCompleteWidget").style.display = "none"; // Hide the widget
+
 
   p1color = color1.value.trim();
   p2color = color2.value.trim();
