@@ -238,6 +238,12 @@ input[type="text"]::placeholder {
   font-size: 2rem;
   margin-bottom: 10px;
   color: #FCE7BD; /* a color similar to the main background */
+  text-shadow: 0 0.3px .3px #888888;
+
+}
+#widgetMessage{
+  text-shadow: 0 0.3px .3px #888888;
+
 }
 
 .widget button {

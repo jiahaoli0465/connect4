@@ -132,7 +132,7 @@ class Game {
       dtm = 380;
     }
     console.log(r);
-    let distanceToFall = 580 - dtm;
+    let distanceToFall = 579 - dtm;
 
     // Update the fall animation distance
     setFallAnimationDistance(distanceToFall);
