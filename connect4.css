@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif; /* For simplicity, but you might want to explore other fonts like Roboto or Open Sans */
-  background-color: #FCE7BD; /* Simplified background color */
+  font-family: 'Nunito', sans-serif;
+  background-color: #FCE7BD; 
   scroll-behavior: smooth;
   overflow-y: scroll;
   user-select: none;
@@ -20,13 +20,13 @@ body {
 
 
 h1 {
-  font-size: 3rem; /* Slightly larger size but not too bold */
+  font-size: 3rem; 
   margin-bottom: 25px; 
-  color: #6B4E3D; /* A deeper, more subdued shade of brown */
-  font-weight: 800; /* Lighter font-weight for a sleek appearance */
-  letter-spacing: normal; /* Resetting to normal spacing */
-  text-transform: none; /* Removed uppercase transformation */
-  text-align: center; /* Ensures horizontal centering */
+  color: #6B4E3D; 
+  font-weight: 800;  
+  letter-spacing: normal;  
+  text-transform: none;  
+  text-align: center;  
   text-shadow: 0 1px 1px #888888;
 
 
@@ -36,27 +36,29 @@ h1 {
   width: 100%;
   margin: 5px 0;
   text-shadow: 0 .3px .3px #888888;
-    font-family: 'Arial', sans-serif; /* For simplicity, but you might want to explore other fonts like Roboto or Open Sans */
+  font-family: 'Nunito', sans-serif;
   color: #381f11;
 }
 
 input[type="text"], #p1color, #playerName1, #p2color, #playerName2 {
   border-radius: 5px;
-  border: 2px solid #5a3713; /* Enhanced border */
+  border: 2px solid #5a3713;  
   padding: 10px 15px; 
   width: 40%;
-  background-color: #eeeae44d; /* Solid white for contrast */
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s; /* Added transform transition */
+  font-family: 'Nunito', sans-serif;
+
+  background-color: #eeeae44d;  
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;  
   color: #5a3713;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 
 }
 
 input[type="text"]:focus {
   border-color: #5a3713;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Enhanced focus shadow */
-  transform: scale(1.02); /* Slightly enlarge when focused */
-  outline: none;  /* Remove default browser outline */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);  
+  transform: scale(1.02);  
+  outline: none;   
 
 }
 
@@ -68,6 +70,8 @@ input[type="text"]::placeholder {
 #authortext{
   text-shadow: 0 0.1px .1px #888888;
   color: #cda8917b;
+  font-family: 'Nunito', sans-serif;
+
 }
 
 .submit-button {
@@ -75,14 +79,16 @@ input[type="text"]::placeholder {
   background-color: #5a3713;
   border: none;
   color: #FFF;
-  font-size: 18px; /* Increased font size for better visibility */
+  font-family: 'Nunito', sans-serif;
+
+  font-size: 18px;  
   padding: 12px 30px; 
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.2s;
-  border-radius: 50px; /* Pill-shaped button */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+  border-radius: 50px;  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);  
 
-  /* Use a transform for a press-down effect on active */
+   
   transform: translateY(0);
   display: block;
   margin-left: auto;
@@ -90,11 +96,12 @@ input[type="text"]::placeholder {
 }
 
 .submit-button:hover {
-  background-color: #73513D; /* Darkened hover color */
+  background-color: #73513D;  
+  cursor: pointer;
 }
 
 .submit-button:active {
-  transform: translateY(2px); /* Button press down effect */
+  transform: translateY(2px);  
 }
 
 
@@ -107,7 +114,7 @@ input[type="text"]::placeholder {
   align-items: center;
 
   height: 100vh;
-  position: relative; /* Add this line */
+  position: relative;  
 
 }
 
@@ -122,7 +129,7 @@ input[type="text"]::placeholder {
   height: 90px;
   width: 650px;
   margin: 0 auto;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); Subtle shadow */
+  
 
 }
 .drops {
@@ -139,6 +146,7 @@ input[type="text"]::placeholder {
 
 .drops:hover {
   background-color: var(--current-player-color);
+  cursor: pointer;
 }
 
 
@@ -153,7 +161,7 @@ input[type="text"]::placeholder {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);  
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
@@ -170,13 +178,13 @@ input[type="text"]::placeholder {
   border-radius: 50%;
   margin: 5px;
   border: 5px solid #5d4538;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);  
 
   
   
 }
 .tile {
-  transition: transform 0.5s ease-in; /* Adjust the time to your preference */
+  transition: transform 0.5s ease-in;  
 }
 
 .fall {
@@ -201,8 +209,8 @@ input[type="text"]::placeholder {
 
 .input-group {
   display: flex;
-  align-items: center; /* align items vertically in the middle */
-  gap: 10px; /* provides spacing between child elements, can adjust as needed */
+  align-items: center;  
+  gap: 10px;  
   
 }
 
@@ -214,7 +222,7 @@ input[type="text"]::placeholder {
   background-color: transparent;
   border-radius: 50%;
   margin: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
 
 }
 
@@ -225,21 +233,21 @@ input[type="text"]::placeholder {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: #634A3C; /* matching the tile's wooden color */
-  border: 5px solid #5d4538; /* giving it a border similar to tiles */
+  background-color: #634A3C;  
+  border: 5px solid #5d4538;  
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* existing shadow for depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
   text-align: center;
   z-index: 10;
-  color: #e6e6e6; /* a lighter color for contrast against dark background */
-  width: 70%; /* to ensure the widget doesn't stretch too wide */
-  max-width: 400px; /* to set an upper limit on its width */
+  color: #e6e6e6;  
+  width: 70%;  
+  max-width: 400px;  
 }
 
 .widget h2 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #FCE7BD; /* a color similar to the main background */
+  color: #FCE7BD;  
   text-shadow: 0 0.3px .3px #888888;
 
 }
@@ -257,19 +265,20 @@ input[type="text"]::placeholder {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.2s;
-  border-radius: 50px; /* pill-shaped button */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* shadow for depth */
+  border-radius: 50px;  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);  
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .widget button:hover {
-  background-color: #73513D; /* darkened hover color */
+  background-color: #73513D; 
+  cursor: pointer;
 }
 
 .widget button:active {
-  transform: translateY(2px); /* button press down effect */
+  transform: translateY(2px);  
 }
 
 
@@ -278,7 +287,7 @@ input[type="text"]::placeholder {
       transform: translateY(0);
   }
   100% {
-      transform: translateY(var(--fall-distance, 580px)); /* Default to 500px if --fall-distance is not set */
+      transform: translateY(var(--fall-distance, 580px));  
   }
 }
 
@@ -294,28 +303,29 @@ input[type="text"]::placeholder {
   width: 100%;
   height: 100%;
   z-index: 1000;  
-  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* existing shadow for depth */
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);  
   
 
 }
 
 button {
-  background-color: #634A3C; /* matching the tile's wooden color */
-  color: #e6e6e6; /* Text color */
-  text-shadow: 0 0.3px .3px #888888; /* Slight text shadow for depth */
-  border: none; /* Remove default borders */
-  border-radius: 20px; /* pill-shaped button */
-  padding: 10px 20px; /* Padding for button size */
-  font-size: 16px; /* Font size */
-  cursor: pointer; /* Hand cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* shadow for depth */
+  background-color: #634A3C;  
+  color: #e6e6e6;  
+  text-shadow: 0 0.3px .3px #888888;  
+  border: none;  
+  border-radius: 20px;  
+  padding: 10px 20px;  
+  font-size: 16px;  
+  cursor: pointer; 
+  transition: background-color 0.3s;  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   border: 1px solid #5d4538;
   
 }
 
 button:hover {
-  background-color: #5a3713; /* Slightly brighter color on hover */
+  background-color: #5a3713;  
+  cursor: pointer;
 }
 
 
@@ -342,13 +352,13 @@ button:hover {
   background-color: #fff;
   overflow-y: auto;       
   z-index: 5;
-  border: 5px solid #5d4538; /* giving it a border similar to tiles */
+  border: 5px solid #5d4538;  
   border-radius: 10px;
-  box-shadow: 0 0  50px rgba(0, 0, 0, 0.584); /* existing shadow for depth */
-  background-color: #634A3C; /* matching the tile's wooden color */
+  box-shadow: 0 0  50px rgba(0, 0, 0, 0.584);  
+  background-color: #634A3C;  
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+   
 }
 
 
@@ -362,9 +372,9 @@ button:hover {
   line-height: 30px;
   text-align: center;
   font-size: 10px;
-  font-weight: bold; /* Make the text bold */
-  color: #f5f5f5; /* Slightly lighter color for better contrast */
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Subtle shadow to lift the text a bit */
+  font-weight: bold;  
+  color: #f5f5f5;  
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);  
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -380,19 +390,21 @@ button:hover {
 }
 
 #showColors {
+  font-family: 'Nunito', sans-serif;
+
   position: fixed;
   bottom: 10px;
   right: 10px;
   z-index: 1001;
-  transition: opacity 1s, visibility 0s linear 1s; /* Added conditional delay for visibility */
+  transition: opacity 1s, visibility 0s linear 1s;  
 
 }
 
 #showColors.reappearing {
-  transition: opacity 1s, visibility 0s linear 0s; /* Remove delay when reappearing */
+  transition: opacity 1s, visibility 0s linear 0s;  
 }
 
 .hide {
   opacity: 0;
-  visibility: hidden; /* This ensures that the button isn't clickable when it's invisible */
+  visibility: hidden; 
 }
