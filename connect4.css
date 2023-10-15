@@ -87,85 +87,99 @@ input[type="text"]::placeholder {
 
 
 #gameScreen {
-  background-color: #ffaaaa97;
+  background-color: #FCE7BD;;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   height: 100vh;
+  position: relative; /* Add this line */
+
 }
 
 #dropper {
-  border: 10px solid rgb(140, 95, 55);
+  border-radius: 7px;
+  padding-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: #5fd3e2;
+  background-color: transparent;
   height: 90px;
   width: 650px;
   margin: 0 auto;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); Subtle shadow */
+
 }
 .drops {
   height: 70px;
   width:  70px;
-  background-color: rgb(223, 223, 223);
+  background-color: var(--drop-color, #eeeae44d);
   border-radius: 50%;
   margin: 5px;
-  border: 5px solid rgb(180, 129, 84);
-
-
+  border: 5px solid #eae6dc4d;
+  transition: transform 0.5s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 
-.drops:hover{
+.drops:hover {
   background-color: var(--current-player-color);
-
-
 }
+
+
 #board {
-  border: 10px solid #a1804b;
   
   height: 560px;
   width: 650px;
   border-radius: 7px;
-  background-color: #f9c66eaa;
+  background-color: #492815;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+
 
 }
 
 
 
 .tile {
-  transition: transform 0.5s ease-in;
   height: 70px;
   width:  70px;
-  background-color: rgb(223, 223, 223);
+  background-color: #634A3C;
   border-radius: 50%;
   margin: 5px;
-  border: 5px solid rgb(180, 129, 84);
+  border: 5px solid #5d4538;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+
   
+  
+}
+.tile {
+  transition: transform 0.5s ease-in; /* Adjust the time to your preference */
 }
 
 .fall {
   animation-name: fall-animation;
-  animation-duration: 50ms;
+  animation-duration: 500ms;
+    transition: transform 500ms;
+
 }
 
-.fall {
-  transform: translateY(calc(100% * [NUMBER_OF_ROWS_TO_FALL]));
-}
 
 @keyframes fall-animation {
   from {
-      transform: translateY(-300px);
+      transform: translateY(0px);
   }
   to {
-      transform: translateY(0);
+      transform: translateY(500px);
   }
 }
 
@@ -181,10 +195,72 @@ input[type="text"]::placeholder {
 .color-tile {
   width: 33px;
   height: 33px;
-  border: 2px solid #5a4a34;
+  border: 2px solid #5a3713;
   margin-left: 20px;
   background-color: transparent;
   border-radius: 50%;
   margin: 5px;
 
+}
+
+.widget {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #634A3C; /* matching the tile's wooden color */
+  border: 5px solid #5d4538; /* giving it a border similar to tiles */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* existing shadow for depth */
+  text-align: center;
+  z-index: 10;
+  color: #e6e6e6; /* a lighter color for contrast against dark background */
+  width: 70%; /* to ensure the widget doesn't stretch too wide */
+  max-width: 400px; /* to set an upper limit on its width */
+}
+
+.widget h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #FCE7BD; /* a color similar to the main background */
+}
+
+.widget button {
+  margin-top: 10px;
+  background-color: #5a3713;
+  border: none;
+  color: #FFF;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  border-radius: 50px; /* pill-shaped button */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* shadow for depth */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.widget button:hover {
+  background-color: #73513D; /* darkened hover color */
+}
+
+.widget button:active {
+  transform: translateY(2px); /* button press down effect */
+}
+
+
+@keyframes dropperFall {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(var(--fall-distance, 500px)); /* Default to 500px if --fall-distance is not set */
+  }
+}
+
+.drops.fall {
+  animation: dropperFall 0.5s forwards;
 }

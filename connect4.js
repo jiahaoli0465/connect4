@@ -2,37 +2,42 @@
 
 
 
-// window.onload = function() {
-//   let p1 = "pink"
-//   let p2 = "orange"
-//   let game = new Game(p1, p2);
-//   document.getElementById("widgetRestartGame").addEventListener("click", () => game.playAgain());
-//   document.getElementById("widgetResetGame").addEventListener("click", () => game.resetPlayers());
+
+let timeout;
+
+function scrollToGame() {
+  const gameScreen = document.getElementById('gameScreen');
+  gameScreen.scrollIntoView({ behavior: 'smooth' });
+}
 
 
-//   // makeBoard();
-//   // makeDropper();
-// }
+function setFallAnimationDistance(distance) {
+  // Check if the style element already exists, if not create one
+  let styleElem = document.getElementById('dynamicFallStyles');
+  if (!styleElem) {
+      styleElem = document.createElement('style');
+      styleElem.id = 'dynamicFallStyles';
+      document.head.appendChild(styleElem);
+  }
 
-
-
-
-
-
-
-
-
-
-// class Player {
-//   constructor(name, color) {
-//     this.name = name;
-//     this.color = color;
-//   }
-// }
-
-
-
-
+  // Update the style element with the new styles
+  styleElem.textContent = `
+      .fall {
+          animation-name: fall-animation;
+          animation-duration: 500ms;
+          transition: transform 500ms;
+      }
+      
+      @keyframes fall-animation {
+          from {
+              transform: translateY(0px);
+          }
+          to {
+              transform: translateY(${distance}px);
+          }
+      }
+  `;
+}
 
 
 class Game {
@@ -94,6 +99,11 @@ class Game {
 
   }
 
+
+
+
+
+
   setPiece(d) {
     if (this.gameOver) {
         return;
@@ -103,50 +113,51 @@ class Game {
     if (r < 0) {
         return;
     }
-    
+
+    let distanceToFall = (this.height - r - 1) * 80; // calculate distance
+
+    // Update the fall animation distance
+    setFallAnimationDistance(distanceToFall);
+
+    let dropElement = document.getElementById(d.toString());
+
+    // Start the falling animation
+    dropElement.style.backgroundColor = this.currPlayer; // Set the color to current player
+
+    dropElement.classList.add('fall');
+
+    // Listen for animation end
+    dropElement.addEventListener('animationend', function() {
+        dropElement.classList.remove('fall');
+        dropElement.style.backgroundColor = ''; // Reset the color
+    }, { once: true });
+
     let tile = document.getElementById(r.toString() + "-" + d.toString());
     if (this.currPlayer == this.player1) {
         tile.classList.add("onePiece");
         tile.style.backgroundColor = this.player1;
-        tile.classList.add('fall');
-        
-
-
-
-
         this.board[r][d] = this.player1;
     } else {
         tile.classList.add("twoPiece");
         tile.style.backgroundColor = this.player2;
-        tile.classList.add('fall');
-
-
-
-
-
         this.board[r][d] = this.player2;
     }
 
-    
-
     if (this.checkWinner()) { // If there's a winner, set gameOver to true and return
         this.gameOver = true;
-        
         return;
     }
 
     // If there's no winner, switch to the next player
-    if (this.currPlayer == this.player1) {
-        this.currPlayer = this.player2;
-    } else {
-        this.currPlayer = this.player1;
-    }
+    this.currPlayer = this.currPlayer == this.player1 ? this.player2 : this.player1;
+
+
     document.documentElement.style.setProperty('--current-player-color', this.currPlayer);
 
-
-    r -= 1;
-    this.currentCol[d] = r;
+    // Decrement the current column's available row
+    this.currentCol[d] = r - 1;
 }
+
 
 
   checkWinner() {
@@ -199,10 +210,18 @@ playAgain() {
 }
 
 resetPlayers() {
-  // You can reset player names, colors, etc. here.
-  // For this example, I'm just calling playAgain().
-  this.playAgain();
+  this.clearBoard();
+  this.clearDropper();
+  this.makeBoard(); // Reset the board
+  this.makeDropper(); // Reset the dropper
+  this.currPlayer = this.player1; // Set the starting player
+
+  // Scroll to the top (initial screen)
+  document.getElementById("initialScreen").scrollIntoView({ behavior: "smooth" });
+  document.getElementById("gameCompleteWidget").style.display = "none"; // Hide the widget
+
 }
+
 clearBoard() {
   document.getElementById("board").innerHTML = '';
 }
@@ -219,30 +238,17 @@ clearDropper() {
 
 
 
-//   makeBoard(){
-//     for (let r = 0; r< this.width; r++) {
-//       let row = [];
-//       for (let c = 0; c < this.height; c++) {
-//         //js
-//         row.push(' ');
+document.getElementById("widgetResetGame").addEventListener("click", () => {
+  game.resetPlayers();
 
-//       //html
-//       let tile = document.createElement("div");
-//       tile.id = r.toString() + "-" + c.toString();
-//       tile.classList.add("tile");
-//       document.getElementById("board").append(tile);
+  // Reset input fields
+  color1.value = '';
+  color2.value = '';
 
-
-//       }
-//       this.board.push(row);
-//     }
-  
-//   }
-
-//}
-
-
-// const game = new Game('player1', 'player2');
+  // Reset color tiles to default colors
+  document.querySelector('#p1tile').style.backgroundColor = 'red';
+  document.querySelector('#p2tile').style.backgroundColor = 'blue';
+});
 
 
 
@@ -326,96 +332,6 @@ const commonColors = [
   'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
 ];
 
-// input1.addEventListener('keyup', searchHandler(input1));
-// input2.addEventListener('keyup', searchHandler(input2));
-
-
-// function searchHandler(input) {
-// 	let tempResults = search(input.value);  // Pass the value of the input
-
-//     showSuggestions(tempResults, input.value);
-
-//     // TODO: Logic to handle user input and display matching suggestions.
-
-
-// }
-
-// function search(str) {
-   
-
-// 	let results = colors.filter((item)=> item.toLowerCase().includes(str.toLowerCase()));
-//     // TODO: Logic for filtering the fruit list based on the search term.
-
-//     return results;
-// }
-
-// function showSuggestions(results, inputVal) {
-//   // suggestions.innerHTML = ''; // Clear previous suggestions
-//   if (results.length === 0 || inputVal.length === 0) {
-//       return; // No suggestions to show
-//   }
-
-//   results.sort((a, b) => {
-//       const indexA = a.toLowerCase().indexOf(inputVal.toLowerCase());
-//       const indexB = b.toLowerCase().indexOf(inputVal.toLowerCase());
-//       return indexA - indexB;
-//   });
-
-  
-
-// }
-
-
-// //===================
-
-// // const p1Tile = document.querySelector('#p1tile');
-// //   p1Tile.style.backgroundColor = 'red';
-
-// //   const p2Tile = document.querySelector('#p2tile');
-// //   p2Tile.style.backgroundColor = 'blue';
-
-// //   // Check if entered colors are valid
- 
-
-// //   const p1name = playerName1.value.trim();
-// //   const p2name = playerName2.value.trim();
-
-// //   if (p1name && p2name) {
-// //     const player1 = new Player(p1name, p1color);
-// //     const player2 = new Player(p2name, p2color);
-// //     const game = new Game(player1, player2);
-
-// //     console.log("hello world");
-
-
-
-
-
-    
-
-// //     // Hide initial screen and show game screen
-// //     // document.getElementById('initialScreen').style.display = 'none';
-// //     // document.getElementById('gameScreen').style.display = 'flex';
-
-// //   } else {
-// //     alert("Please fill in the player names before starting the game!");
-// //   }
-// //   // Game code
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // });
 function isValidColor(strColor) {
   var s = new Option().style;
   s.color = strColor;
