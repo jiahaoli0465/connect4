@@ -114,7 +114,7 @@ input[type="text"]::placeholder {
   align-items: center;
 
   height: 100vh;
-  position: relative;  
+  /* position: relative;   */
 
 }
 
@@ -408,3 +408,148 @@ button:hover {
   opacity: 0;
   visibility: hidden; 
 }
+
+
+@media (max-width: 680px) { /* targeting typical mobile devices */
+  body{
+    overflow-x: hidden; /* This prevents horizontal scrolling */
+    
+  }
+  #contain{
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column; 
+
+
+  }
+#initialScreen {
+  transform: scale(0.93); /* Adjust the scale value as needed */
+    
+}
+#gameScreen {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column;  /* Stack children vertically, adjust as needed */
+  transform: scale(0.83);
+  width: max-content;
+
+}
+}
+
+@media (max-width: 560px) { /* targeting typical mobile devices */
+  body{
+    overflow-x: hidden; /* This prevents horizontal scrolling */
+    
+  }
+  #contain{
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column; 
+
+
+  }
+#initialScreen {
+  transform: scale(0.93); /* Adjust the scale value as needed */
+    
+}
+#gameScreen {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column;  /* Stack children vertically, adjust as needed */
+  transform: scale(0.73);
+  width: max-content;
+
+}
+}
+
+@media (max-width: 485px) { /* targeting typical mobile devices */
+  body{
+    overflow-x: hidden; /* This prevents horizontal scrolling */
+    
+  }
+  #contain{
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column; 
+
+
+  }
+#initialScreen {
+  transform: scale(0.93); /* Adjust the scale value as needed */
+    
+}
+#gameScreen {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column;  /* Stack children vertically, adjust as needed */
+  transform: scale(0.63);
+  width: max-content;
+
+}
+}
+@media (max-width: 425px) { /* targeting typical mobile devices */
+  body{
+    overflow-x: hidden; /* This prevents horizontal scrolling */
+    
+  }
+  #contain{
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column; 
+
+
+  }
+#initialScreen {
+  transform: scale(0.93); /* Adjust the scale value as needed */
+    
+}
+#gameScreen {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column;  /* Stack children vertically, adjust as needed */
+  transform: scale(0.53);
+  width: max-content;
+
+}
+}
+
+@media (max-width: 360px) { /* targeting typical mobile devices */
+  body{
+    overflow-x: hidden; /* This prevents horizontal scrolling */
+    
+  }
+  #contain{
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column; 
+
+
+  }
+#initialScreen {
+  transform: scale(0.93); /* Adjust the scale value as needed */
+    
+}
+#gameScreen {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center the content */
+  flex-direction: column;  /* Stack children vertically, adjust as needed */
+  transform: scale(0.43);
+  width: max-content;
+
+}
+}
+
+
+
+
+ 
