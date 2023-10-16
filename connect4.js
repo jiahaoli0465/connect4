@@ -4,178 +4,140 @@
 
 
 
+/**
+ * Scrolls the view to the game screen element.
+ */
 function scrollToGame() {
   const gameScreen = document.getElementById('gameScreen');
   gameScreen.scrollIntoView({ behavior: 'smooth' });
 }
 
-
+/**
+ * Dynamically sets the falling animation distance.
+ * @param {number} distance - The distance the dropper should fall.
+ */
 function setFallAnimationDistance(distance) {
-  // Check if the style element already exists, if not create one
   let styleElem = document.getElementById('dynamicFallStyles');
   if (!styleElem) {
-      styleElem = document.createElement('style');
-      styleElem.id = 'dynamicFallStyles';
-      document.head.appendChild(styleElem);
+    styleElem = document.createElement('style');
+    styleElem.id = 'dynamicFallStyles';
+    document.head.appendChild(styleElem);
   }
 
-  // Update the style element with the new styles
   styleElem.textContent = `
-      .fall {
-          animation-name: dropperFall;
-          animation-duration: 250ms;
-          transition: transform 250ms;
+    .fall {
+      animation-name: dropperFall;
+      animation-duration: 250ms;
+      transition: transform 250ms;
+    }
+
+    @keyframes dropperFall {
+      from {
+        transform: translateY(0px);
       }
-      
-      @keyframes dropperFall{
-          from {
-              transform: translateY(0px);
-          }
-          to {
-              transform: translateY(${distance}px);
-          }
+      to {
+        transform: translateY(${distance}px);
       }
+    }
   `;
 }
 
-
 class Game {
-  height = 6;
-  width = 7;
-  board = [];
-  dropper = [];
-  currentCol = [];
-  gameOver = false;
-
   constructor(player1, player2) {
+    this.height = 6;
+    this.width = 7;
     this.player1 = player1;
     this.player2 = player2;
-
     this.currPlayer = player1;
+    this.board = [];
+    this.dropper = [];
+    this.currentCol = [5, 5, 5, 5, 5, 5, 5];
+    this.gameOver = false;
+
     this.makeBoard();
     this.makeDropper();
-    
-    // this.gameOver = false;
-
   }
-  makeBoard(){
+
+  /**
+   * Initializes an empty game board.
+   */
+  makeBoard() {
     this.board = [];
-    this.currentCol = [5,5,5,5,5,5,5];
-
-
-
-    for (let r = 0; r< 6; r++) {
+    for (let r = 0; r < this.height; r++) {
       let row = [];
-      for (let c = 0; c < 7; c++) {
-        //js
+      for (let c = 0; c < this.width; c++) {
         row.push(' ');
-  
-      //html
         let tile = document.createElement("div");
-        tile.id = r.toString() + "-" + c.toString();
+        tile.id = `${r}-${c}`;
         tile.classList.add("tile");
-
-        
         document.getElementById("board").append(tile);
-  
-  
       }
       this.board.push(row);
     }
   }
-  makeDropper(){
+
+  /**
+   * Initializes the dropper for players to place pieces.
+   */
+  makeDropper() {
     this.dropper = [];
-    for (let d = 0; d< 7; d++){
+    for (let d = 0; d < this.width; d++) {
       this.dropper.push(' ');
       let drops = document.createElement("div");
       drops.id = d.toString();
       drops.classList.add("drops");
-      
-      
       drops.addEventListener("click", () => this.setPiece(d));
       document.getElementById("dropper").append(drops);
     }
-
   }
 
-
-
-
-
-
+  /**
+   * Places a game piece on the board.
+   * @param {number} d - The column index.
+   */
   setPiece(d) {
-    if (this.gameOver) {
-        return;
-    }
+    if (this.gameOver) return;
 
     let r = this.currentCol[d];
-    if (r < 0) {
-        return;
+    if (r < 0) return;
+
+    let distanceToFall;
+    // Calculate distance based on the current row
+    switch(r) {
+      case 5: distanceToFall = 579; break;
+      case 4: distanceToFall = 484; break;
+      case 3: distanceToFall = 389; break;
+      case 2: distanceToFall = 294; break;
+      case 1: distanceToFall = 199; break;
+      default: distanceToFall = 104; break;
     }
 
-    // let distanceToFall = (this.height - r - 1) * 80; // calculate distance
-    // let distanceToFall = (this.height - r) * rowDistance;
-    let dtm;
-    if (r === 5){
-      dtm = 0;
-    }
-    if (r === 4){
-      dtm = 95;
-    }
-    if (r === 3){
-      dtm = 190;
-    }
-    if (r === 2){
-      dtm = 285;
-    }
-    if (r === 1 ){
-      dtm = 380;
-    }
-    console.log(r);
-    let distanceToFall = 579 - dtm;
-
-    // Update the fall animation distance
     setFallAnimationDistance(distanceToFall);
 
     let dropElement = document.getElementById(d.toString());
-
-    // Start the falling animation
-    dropElement.style.backgroundColor = this.currPlayer; // Set the color to current player
-
+    dropElement.style.backgroundColor = this.currPlayer;  // Set color to current player
     dropElement.classList.add('fall');
 
-    // Listen for animation end
+    // Reset after animation ends
     dropElement.addEventListener('animationend', function() {
-        dropElement.classList.remove('fall');
-        dropElement.style.backgroundColor = ''; // Reset the color
+      dropElement.classList.remove('fall');
+      dropElement.style.backgroundColor = ''; 
     }, { once: true });
 
-    let tile = document.getElementById(r.toString() + "-" + d.toString());
-    if (this.currPlayer == this.player1) {
-        tile.classList.add("onePiece");
-        tile.style.backgroundColor = this.player1;
-        this.board[r][d] = this.player1;
-    } else {
-        tile.classList.add("twoPiece");
-        tile.style.backgroundColor = this.player2;
-        this.board[r][d] = this.player2;
+    let tile = document.getElementById(`${r}-${d}`);
+    tile.classList.add(this.currPlayer == this.player1 ? "onePiece" : "twoPiece");
+    tile.style.backgroundColor = this.currPlayer;
+    this.board[r][d] = this.currPlayer;
+
+    if (this.checkWinner()) {
+      this.gameOver = true;
+      return;
     }
 
-    if (this.checkWinner()) { // If there's a winner, set gameOver to true and return
-        this.gameOver = true;
-        return;
-    }
-
-    // If there's no winner, switch to the next player
     this.currPlayer = this.currPlayer == this.player1 ? this.player2 : this.player1;
-
-
     document.documentElement.style.setProperty('--current-player-color', this.currPlayer);
-
-    // Decrement the current column's available row
     this.currentCol[d] = r - 1;
-}
-
+  }
 
 
   checkWinner() {
@@ -426,18 +388,10 @@ const modalContent = document.querySelector('.modal-content');
 // Event listener for a click on the entire window
 window.addEventListener('click', function(event) {
     // Check if the click is outside the modal content
-    if (event.target === modal) {
+    if (event.target!= document.getElementById('showColors')) {
         closeModal();
     }
-    if (event.target === screen) {
-      closeModal();
-  }
-  if (event.target === button) {
-    closeModal();
-}
-if (event.target === body) {
-  closeModal();
-}
+    
 });
 
 
