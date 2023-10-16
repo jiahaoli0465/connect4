@@ -246,7 +246,7 @@ input[type="text"]::placeholder {
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
   text-align: center;
-  z-index: 0;
+  z-index: 10;
   color: #e6e6e6;  
   width: 70%;  
   max-width: 400px;  
