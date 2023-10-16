@@ -429,6 +429,15 @@ window.addEventListener('click', function(event) {
     if (event.target === modal) {
         closeModal();
     }
+    if (event.target === screen) {
+      closeModal();
+  }
+  if (event.target === button) {
+    closeModal();
+}
+if (event.target === body) {
+  closeModal();
+}
 });
 
 
