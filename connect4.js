@@ -394,6 +394,15 @@ window.addEventListener('click', function(event) {
     
 });
 
+function handleClose(event) {
+  let showColors = document.getElementById('showColors');
+  if (!showColors.contains(event.target)) {
+      closeModal();
+  }
+}
+
+window.addEventListener('click', handleClose);
+window.addEventListener('touchend', handleClose);
 
 
 const colorsButton = document.getElementById('showColors');
