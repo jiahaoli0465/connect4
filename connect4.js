@@ -179,15 +179,18 @@ class Game {
     return false; // no winner found
 }
 playAgain() {
+  this.gameOver = false; // Set the game over flag to false
+
   this.board = [];
   this.dropper = [];
-  this.currentCol = [];
+  this.currentCol = [5, 5, 5, 5, 5, 5, 5];
+
   this.clearBoard();
   this.clearDropper();
   this.makeBoard(); // Reset the board
   this.makeDropper(); // Reset the dropper
   this.currPlayer = this.player1; // Set the starting player
-  this.gameOver = false; // Set the game over flag to false
+
   document.getElementById("gameCompleteWidget").style.display = "none"; // Hide the widget
 }
 
@@ -268,7 +271,12 @@ formElement.addEventListener("submit", function(e) {
   // game.player2 = p2color;
   document.documentElement.style.setProperty('--current-player-color', p1color);
 
-  document.getElementById("widgetRestartGame").addEventListener("click", () => game.playAgain());
+  document.getElementById("widgetRestartGame").addEventListener("click", () => {
+    game.playAgain()
+    // game.resetPlayers()
+    // let game = new Game(p1color, p2color);
+    // document.documentElement.style.setProperty('--current-player-color', p1color);
+  });
   document.getElementById("widgetResetGame").addEventListener("click", () => game.resetPlayers());
 
 
