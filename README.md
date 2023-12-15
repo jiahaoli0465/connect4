@@ -3,6 +3,12 @@
 
 Welcome to the Connect Four Web Application! This project is a web-based rendition of the classic Connect Four game. It features a user-friendly interface, smooth animations, and responsive design, ensuring an enjoyable experience across various devices.
 
+
+
+https://github.com/jiahaoli0465/connect4/assets/144624616/b5cf8205-23c5-435e-b3d3-b296f602e057
+
+
+
 ## Features
 
 - **Interactive Gameplay**: Engage in the classic Connect Four experience with a simple yet captivating interface.
